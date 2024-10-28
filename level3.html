@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Level 3</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+ body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-family: 'Press Start 2P', cursive; /* Retro czcionka */
+    margin: 0;
+    background: linear-gradient(to bottom, #222, #444); /* Gradient tła */
+    color: #f8b400; /* Kolor tekstu */
+    text-align: center;
+    min-height: 100vh; /* Zapewnia, że strona zajmuje co najmniej wysokość widoku */
+}
+
+
+        h1 {
+            margin: 20px 0;
+            font-size: 2.5rem; /* Powiększenie nagłówka */
+            text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.7); /* Cień dla tekstu */
+        }
+
+        /* Stylizacja obszaru gry */
+        #gameArea {
+    position: relative;
+    width: 600px;
+    height: 360px;
+    border: 4px solid #f8b400; /* Obramowanie */
+    border-radius: 10px; /* Zaokrąglenie rogów */
+    background-image: url('images/tło_level3.png');
+    background-repeat: no-repeat; /* Unikaj powtarzania tła */
+    background-size: cover; /* Ustaw na cover lub contain w zależności od efektu */
+    background-position: center; /* Wyśrodkowanie obrazu tła */
+    overflow: hidden;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5); /* Cień */
+}
+
+
+        #player {
+            position: absolute;
+            width: 30px;
+            height: 30px;
+            background-image: url('images/postać/przod.png'); 
+            background-size: cover; 
+            bottom: 0;
+            left: 10px;
+        }
+
+        .item {
+            position: absolute;
+            width: 20px;
+            height: 20px;
+        }
+
+        .chaser {
+            position: absolute;
+            width: 30px;
+            height: 30px;
+        }
+
+        #modal {
+    display: none;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 300px;
+    background-color: white;
+    padding: 20px;
+    border: 3px solid #333;
+    border-radius: 12px; /* Zaokrąglone rogi jak w kartach */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3); /* Efekt cienia */
+    font-family: 'Arial', sans-serif;
+    text-align: center;
+    z-index: 1000;
+}
+
+/* Stylizacja nagłówka i treści w okienku */
+#modal h2 {
+    font-size: 24px;
+    margin: 0;
+    color: #333;
+}
+
+#modal p {
+    font-size: 16px;
+    margin: 10px 0;
+}
+
+/* Stylizacja pola input i przycisku */
+#modal input {
+    margin-top: 10px;
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #333;
+    border-radius: 6px;
+    box-sizing: border-box;
+}
+
+#modal button {
+    margin-top: 10px;
+    padding: 10px 20px;
+    font-size: 16px;
+    color: white;
+    background-color: #333;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+}
+
+#modal button:hover {
+    background-color: #555;
+}
+
+/* Stylizacja tła */
+#overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: none;
+    z-index: 999;
+}
+    </style>
+</head>
+<body>
+    <h1>First (and probably last) day at PSR</h1>
+    <div id="gameArea">
+        <div id="player"></div>
+        <div class="item transparent1" style="top: 300px; left: 165px;"></div>
+        <div class="item transparent2" style="top: 350px; left: 195px;"></div>
+        <div class="item transparent3" style="top: 300px; left: 350px;"></div>
+        <div class="item transparent4" style="top: 115px; left: 505px;"></div>
+        <div class="item transparent5" style="top: 20px; left: 225px;"></div>
+    </div>
+
+    <div id="modal" style="display:none;">
+        <div id="modalContent">
+            <p id="modalQuestion"></p> <!-- Element do wyświetlania pytania -->
+            <input type="text" id="answer" placeholder="Twoja odpowiedź" />
+            <button id="submit">Wyślij</button>
+        </div>
+    </div>
+    <div id="overlay" style="display:none;"></div>
+    
+    <script src="script_level3.js"></script>
+</body>
+</html>
